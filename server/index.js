@@ -1,7 +1,7 @@
 const { GraphQLServer } = require("graphql-yoga");
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost/test5");
+mongoose.connect("mongodb://mymongo:27017/test5");
 
 const Todo = mongoose.model("Todo", {
   text: String,
