@@ -1,14 +1,30 @@
 version: "3"
 services:
-  mymongo:
-    image: "mongo"
-
   clientnode:
     build: ./client
     ports:
       - "3000:3000"
+    networks:
+      - todoapp
 
   servernode:
     build: ./server
     ports:
       - "4000:4000"
+    networks:
+      - todoapp
+  
+  mymongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongotodo:/data/db
+    networks:
+      - todoapp
+
+networks:
+  todoapp:
+
+volumes:
+  mongotodo:
